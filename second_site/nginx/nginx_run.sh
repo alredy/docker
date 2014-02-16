@@ -4,3 +4,4 @@ echo "        server $(echo $BACKEND1_PORT | awk -F// '{print $2}') max_fails=2 
 echo "        server $(echo $BACKEND2_PORT | awk -F// '{print $2}') max_fails=2  fail_timeout=20s;" >> /etc/nginx/conf.d/backends.conf
 echo "}" >> /etc/nginx/conf.d/backends.conf
 nginx
+
