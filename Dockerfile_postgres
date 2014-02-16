@@ -1,0 +1,7 @@
+FROM ubuntu
+RUN apt-get install -y postgresql
+RUN sed -i.bak "s/.*listen_addresses.*/listen_addresses = \'0.0.0.0\'/" /etc/postgresql/9.1/main/postgresql.conf
+RUN echo "host    all             all             0.0.0.0/0               trust" >> /etc/postgresql/9.1/main/pg_hba.conf
+RUN mkdir -p /var/lib/postgresql/9.1/main
+EXPOSE 5432
+CMD service postgresql start && tail -F /var/log/postgresql/postgresql-9.1-main.log
